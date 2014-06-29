@@ -3,6 +3,8 @@
 #include <sal.h>
 #include <ntifs.h>
 
+#define	PROCID(cpu) (KAFFINITY)((ULONG_PTR)KeQueryActiveProcessors() & (ULONG_PTR)(1 << (USHORT)cpu))
+
 //TODO : change to iterattor pattern
 class CProcessorWalker
 {
@@ -11,7 +13,7 @@ public:
 	__checkReturn
 	bool 
 	NextCore(
-		__inout BYTE* coreId
+		__inout unsigned char* coreId
 		)
 	{
 		if (*coreId > (sizeof(ULONG) << 3))
