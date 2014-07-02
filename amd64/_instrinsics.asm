@@ -82,7 +82,7 @@ __cli proc
 __cli endp
 
 __sti proc
-	cli
+	sti
 	ret
 __sti endp
 
